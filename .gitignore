@@ -10,3 +10,4 @@
 
 # Project exclude paths
 /app/.cxx/
+/.idea/
