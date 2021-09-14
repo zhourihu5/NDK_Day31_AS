@@ -21,7 +21,17 @@
 
     <ImageView
         android:id="@+id/card_iv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/card_n"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="扫描轮廓后的图像"/>
+    <ImageView
+        android:id="@+id/card_tour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/card_n"/>
 
 </LinearLayout>

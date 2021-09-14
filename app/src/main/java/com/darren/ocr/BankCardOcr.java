@@ -12,5 +12,5 @@ public class BankCardOcr {
         System.loadLibrary("native-lib");
     }
 
-    public static native String cardOcr(Bitmap bitmap);
+    public static native String cardOcr(Bitmap bitmap,String path);
 }

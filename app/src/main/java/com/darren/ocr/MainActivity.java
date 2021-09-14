@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_PERMISSION_CODE = 1;
     private static final String[] PERMISSIONS_STORAGE = {
@@ -24,15 +26,17 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mCardIv;
     private Bitmap mCardBitmap;
     private TextView mCardNumberTv;
+    ImageView ivCardTour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mCardIv = findViewById(R.id.card_iv);
         mCardNumberTv = findViewById(R.id.card_number_tv);
+        ivCardTour= findViewById(R.id.card_tour);
         mCardBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.card_n);
         mCardIv.setImageBitmap(mCardBitmap);
-        requestPermision();
+//        requestPermision();
     }
     public void requestPermision() {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
@@ -68,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cardOcr(View view) {
-        String bankNumber = BankCardOcr.cardOcr(mCardBitmap);
+        String path=new File(getExternalCacheDir(),"card_n.jpg").getAbsolutePath();
+        String bankNumber = BankCardOcr.cardOcr(mCardBitmap,path);
         mCardNumberTv.setText(bankNumber);
+        ivCardTour.setImageBitmap(BitmapFactory.decodeFile(path));
     }
 }
